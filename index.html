@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="tailwind.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body class="bg-gray-200 text-[14px]">
     <header class="bg-white h-[45px] shadow-sm px-2">
@@ -41,8 +42,8 @@
             <!-- Search end -->
 
             <!-- User -->
-            <div>
-                <div class="flex items-center space-x-2 hover:bg-gray-100 h-[45px] px-1 cursor-pointer">
+            <div x-data="{ open: false }">
+                <div class="flex items-center space-x-2 hover:bg-gray-100 h-[45px] px-1 cursor-pointer relative" @click="open = ! open">
                     <div>
                         <strong class="font-medium">Sergey</strong>
                     </div>
@@ -54,7 +55,34 @@
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                </a>
+
+                    <!-- Dropdown -->
+                    <div class="absolute top-full right-0 bg-white w-[200px] border border-gray-200 shadow-md rounded-b-md" x-transition x-show="open" @click.outside="open = false">
+                        <div class="flex flex-row hover:bg-gray-100 px-[12px] my-[6px] py-[6px]">
+                            <div class="w-[35px]">
+                                <img src="./img/thum.jpg" alt="" class="rounded-full">
+                            </div>
+                            <div class="ml-2">
+                                <div>Sergey Frolenko</div>
+                                <div class="text-[12px] text-gray-400">Go to VK ID</div>
+                            </div>
+                        </div>
+                        <hr class="text-gray-200 mx-2">
+                        <div class="text-[12.5px]">
+                            <ul class="flex flex-col">
+                                <li class="hover:bg-gray-100 px-[12px] mt-[6px] py-[3px]">Settings</li>
+                                <li class="hover:bg-gray-100 px-[12px] mb-[6px] py-[3px]">Help</li>
+                            </ul>
+                        </div>
+                        <hr class="text-gray-200 mx-2">
+                        <div class="text-[12.5px]">
+                            <div class="hover:bg-gray-100 px-[12px] my-[6px] py-[3px]">
+                                Sign out
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Dropdown end -->
+                </div>
             </div>
             <!-- User end -->
         </div>
