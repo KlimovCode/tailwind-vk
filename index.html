@@ -12,7 +12,7 @@
     <header class="bg-white h-[45px] shadow-sm px-2">
         <div class="container flex items-center justify-between mx-auto max-w-[1000px]">
             <!-- Logo -->
-            <div class="f">
+            <div class="pl-2">
                 <a href="/">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 14.4C0 7.61 0 4.22 2.1 2.1 4.23 0 7.62 0 14.4 0h1.2c6.79 0 10.18 0 12.3 2.1C30 4.23 30 7.62 30 14.4v1.2c0 6.79 0 10.18-2.1 12.3C25.77 30 22.38 30 15.6 30h-1.2c-6.79 0-10.18 0-12.3-2.1C0 25.77 0 22.38 0 15.6v-1.2z" fill="#07F"></path><path d="M15.96 21.61c-6.84 0-10.74-4.68-10.9-12.48H8.5c.11 5.72 2.63 8.14 4.63 8.64V9.13h3.23v4.93c1.97-.21 4.05-2.46 4.75-4.94h3.22a9.53 9.53 0 01-4.38 6.23 9.87 9.87 0 015.13 6.26h-3.55c-.76-2.37-2.66-4.21-5.17-4.46v4.46h-.39z" fill="#fff"></path>
                     </svg>
@@ -89,7 +89,7 @@
     </header>
 
     <div class="wrapper mx-auto max-w-[1000px] mt-[15px]">
-        <aside x-data="{ open: false }">
+        <aside x-data="{ openMenu: false }" >
             <ul class="w-[180px] text-[13px]">
                 <li>
                     <a href="" class="flex px-2 py-1 hover:bg-[#e5e7ea] rounded">
@@ -145,21 +145,21 @@
                         About VK
                     </a>
                 </li>
-                <li class="">
-                    <div class="text-gray-400 hover:underline px-2 hover:cursor-pointer flex" @mouseenter="open = true">
+                <li class=""  @click="openMenu = ! openMenu">
+                    <div class="text-gray-400 hover:underline px-2 hover:cursor-pointer flex" @mouseenter="openMenu = true">
                         More
                         <div class="mt-[3px] ml-1 relative">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
-                            <div class="w-[10px] h-[10px] inset-0 absolute top-full" x-show="open">
+                            <div class="w-[10px] h-[10px] inset-0 absolute top-full" x-show="openMenu" @click.outside="openMenu = false">
                                 <div class="bg-white inset-0 border border-gray-200 absolute left-[3px] transform rotate-45"></div>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div x-show="open" @click.outside="open = false" @mouseleave="open = false">
+                <li @mouseleave="openMenu = false">
+                    <div x-show="openMenu" >
                         <div class="rounded bg-white -my-1 py-1 absolute w-[180px] top-full left-0  border-gray-200 shadow-md">
                             <ul class="text-[12px]">
                                 <li class="">
